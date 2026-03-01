@@ -27,5 +27,5 @@ defined('MOODLE_INTERNAL') || die();
 $string['ace:addinstance'] = 'Add ACE Dashboard block';
 $string['ace:myaddinstance'] = 'Add ACE Dashboard to My page';
 $string['pluginname'] = 'ACE Dashboard';
-$string['privacy:metadata'] = 'The ACE Dashboard block does not store any personal data. All data is managed by the local_ace plugin.';
+$string['privacy:metadata'] = 'The ACE Dashboard block does not store any personal data. All data is managed by the local_aceengine plugin.';
 $string['viewfulldashboard'] = 'View full dashboard';

@@ -28,7 +28,7 @@
  * ACE dashboard block.
  *
  * Displays gamification stats (XP, levels, engagement scores, quests)
- * from the local_ace plugin on course pages and the user dashboard.
+ * from the local_aceengine plugin on course pages and the user dashboard.
  *
  * @package    block_ace
  * @copyright  2026 Letstudy Group
@@ -62,7 +62,7 @@ class block_ace extends block_base {
             return $this->content;
         }
 
-        if (!get_config('local_ace', 'enableplugin')) {
+        if (!get_config('local_aceengine', 'enableplugin')) {
             return $this->content;
         }
 
@@ -84,9 +84,9 @@ class block_ace extends block_base {
     private function get_course_dashboard_content(): stdClass {
         global $USER, $COURSE, $OUTPUT, $CFG;
 
-        require_once($CFG->dirroot . '/local/ace/lib.php');
+        require_once($CFG->dirroot . '/local/aceengine/lib.php');
 
-        if (!local_ace_is_enabled_for_course($COURSE->id)) {
+        if (!local_aceengine_is_enabled_for_course($COURSE->id)) {
             return $this->content;
         }
 
@@ -96,18 +96,18 @@ class block_ace extends block_base {
         }
 
         // Load dashboard data and render.
-        $dashboard = new \local_ace\output\dashboard($USER->id, $COURSE->id);
-        $renderer = $this->page->get_renderer('local_ace');
+        $dashboard = new \local_aceengine\output\dashboard($USER->id, $COURSE->id);
+        $renderer = $this->page->get_renderer('local_aceengine');
         $this->content->text = $renderer->render_from_template(
-            'local_ace/dashboard',
+            'local_aceengine/dashboard',
             $dashboard->export_for_template($OUTPUT)
         );
 
         // Initialise JS for quest completion.
-        $this->page->requires->js_call_amd('local_ace/dashboard', 'init', [$COURSE->id]);
+        $this->page->requires->js_call_amd('local_aceengine/dashboard', 'init', [$COURSE->id]);
 
         // Add a footer link to the full dashboard page.
-        $url = new moodle_url('/local/ace/index.php', ['courseid' => $COURSE->id]);
+        $url = new moodle_url('/local/aceengine/index.php', ['courseid' => $COURSE->id]);
         $this->content->footer = html_writer::link(
             $url,
             get_string('viewfulldashboard', 'block_ace'),
@@ -125,7 +125,7 @@ class block_ace extends block_base {
     private function get_my_dashboard_content(): stdClass {
         global $USER, $DB, $CFG;
 
-        require_once($CFG->dirroot . '/local/ace/lib.php');
+        require_once($CFG->dirroot . '/local/aceengine/lib.php');
 
         $enrolledcourses = enrol_get_users_courses($USER->id, true, 'id, fullname, shortname');
 
@@ -142,7 +142,7 @@ class block_ace extends block_base {
             if ($course->id == SITEID) {
                 continue;
             }
-            if (!local_ace_is_enabled_for_course($course->id)) {
+            if (!local_aceengine_is_enabled_for_course($course->id)) {
                 continue;
             }
 
@@ -152,7 +152,7 @@ class block_ace extends block_base {
             }
 
             // Load XP/level.
-            $xprecord = $DB->get_record('local_ace_xp', [
+            $xprecord = $DB->get_record('local_aceengine_xp', [
                 'userid' => $USER->id,
                 'courseid' => $course->id,
             ]);
@@ -160,27 +160,27 @@ class block_ace extends block_base {
             $level = $xprecord ? (int) $xprecord->level : 1;
 
             // Load scores.
-            $engagement = $DB->get_record('local_ace_engagement', [
+            $engagement = $DB->get_record('local_aceengine_engagement', [
                 'userid' => $USER->id,
                 'courseid' => $course->id,
             ]);
             $engscore = $engagement ? round((float) $engagement->score) : 0;
 
-            $mastery = $DB->get_record('local_ace_mastery', [
+            $mastery = $DB->get_record('local_aceengine_mastery', [
                 'userid' => $USER->id,
                 'courseid' => $course->id,
             ]);
             $mastscore = $mastery ? round((float) $mastery->score) : 0;
 
             // Count active quests.
-            $activequests = $DB->count_records('local_ace_quests', [
+            $activequests = $DB->count_records('local_aceengine_quests', [
                 'userid' => $USER->id,
                 'courseid' => $course->id,
                 'status' => 'active',
             ]);
 
             // Count completed quests.
-            $completed = $DB->count_records('local_ace_quests', [
+            $completed = $DB->count_records('local_aceengine_quests', [
                 'userid' => $USER->id,
                 'courseid' => $course->id,
                 'status' => 'completed',
@@ -200,7 +200,7 @@ class block_ace extends block_base {
                 'courseid' => $course->id,
                 'coursename' => format_string($course->fullname),
                 'courseurl' => (new moodle_url('/course/view.php', ['id' => $course->id]))->out(false),
-                'dashboardurl' => (new moodle_url('/local/ace/index.php', ['courseid' => $course->id]))->out(false),
+                'dashboardurl' => (new moodle_url('/local/aceengine/index.php', ['courseid' => $course->id]))->out(false),
                 'xp' => $xp,
                 'level' => $level,
                 'engagement' => $engscore,

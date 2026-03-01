@@ -58,7 +58,7 @@
                 "courseid": 5,
                 "coursename": "Business Strategy",
                 "courseurl": "/course/view.php?id=5",
-                "dashboardurl": "/local/ace/index.php?courseid=5",
+                "dashboardurl": "/local/aceengine/index.php?courseid=5",
                 "xp": 450,
                 "level": 3,
                 "engagement": 75,
@@ -81,15 +81,15 @@
             </div>
             <div class="text-center px-2 mb-1">
                 <div class="fw-bold text-info ace-stat-value">Lv.{{highestlevel}}</div>
-                <small class="text-muted">{{#str}}level, local_ace{{/str}}</small>
+                <small class="text-muted">{{#str}}level, local_aceengine{{/str}}</small>
             </div>
             <div class="text-center px-2 mb-1">
                 <div class="fw-bold text-primary ace-stat-value">{{avgengagement}}%</div>
-                <small class="text-muted">{{#str}}engagementscore, local_ace{{/str}}</small>
+                <small class="text-muted">{{#str}}engagementscore, local_aceengine{{/str}}</small>
             </div>
             <div class="text-center px-2 mb-1">
                 <div class="fw-bold text-success ace-stat-value">{{avgmastery}}%</div>
-                <small class="text-muted">{{#str}}masteryscore, local_ace{{/str}}</small>
+                <small class="text-muted">{{#str}}masteryscore, local_aceengine{{/str}}</small>
             </div>
         </div>
 
@@ -97,15 +97,15 @@
         {{#totalactivequests}}
         <div class="alert alert-warning py-2 px-3 mb-3 small">
             <i class="fa fa-bolt me-1"></i>
-            {{#str}}activequests, local_ace{{/str}}: <strong>{{totalactivequests}}</strong>
+            {{#str}}activequests, local_aceengine{{/str}}: <strong>{{totalactivequests}}</strong>
             &middot;
-            {{#str}}completedquests, local_ace{{/str}}: <strong>{{totalcompleted}}</strong>
+            {{#str}}completedquests, local_aceengine{{/str}}: <strong>{{totalcompleted}}</strong>
         </div>
         {{/totalactivequests}}
         {{^totalactivequests}}
         <div class="text-muted small mb-3">
             <i class="fa fa-check-circle me-1 text-success"></i>
-            {{#str}}completedquests, local_ace{{/str}}: <strong>{{totalcompleted}}</strong>
+            {{#str}}completedquests, local_aceengine{{/str}}: <strong>{{totalcompleted}}</strong>
         </div>
         {{/totalactivequests}}
 
@@ -132,7 +132,7 @@
 
     {{^hascourses}}
         <p class="text-muted text-center small mb-0">
-            {{#str}}noactivequests, local_ace{{/str}}
+            {{#str}}noactivequests, local_aceengine{{/str}}
         </p>
     {{/hascourses}}
 

@@ -27,5 +27,5 @@ defined('MOODLE_INTERNAL') || die();
 $string['ace:addinstance'] = 'Προσθήκη block Πίνακα ACE';
 $string['ace:myaddinstance'] = 'Προσθήκη Πίνακα ACE στη σελίδα μου';
 $string['pluginname'] = 'Πίνακας ACE';
-$string['privacy:metadata'] = 'Το block Πίνακας ACE δεν αποθηκεύει προσωπικά δεδομένα. Όλα τα δεδομένα διαχειρίζονται από το πρόσθετο local_ace.';
+$string['privacy:metadata'] = 'Το block Πίνακας ACE δεν αποθηκεύει προσωπικά δεδομένα. Όλα τα δεδομένα διαχειρίζονται από το πρόσθετο local_aceengine.';
 $string['viewfulldashboard'] = 'Προβολή πλήρους πίνακα';

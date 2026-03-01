@@ -18,7 +18,7 @@
  * Uninstall handler for block_ace.
  *
  * Part of the ACE plugin family. This block displays the ACE Dashboard
- * and depends on the local_ace plugin for all data.
+ * and depends on the local_aceengine plugin for all data.
  *
  * @package    block_ace
  * @copyright  2026 Letstudy Group
