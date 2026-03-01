@@ -1,6 +1,6 @@
 # ACE Dashboard Block for Moodle
 
-A Moodle block plugin that displays student engagement scores, mastery levels, and learning analytics from the [ACE (Adaptive Course Enhancement)](https://github.com/letstudygroup/moodle-local_ace) local plugin.
+A Moodle block plugin that displays student engagement scores, mastery levels, and learning analytics from the [ACE (Adaptive Challenge Engine)](https://github.com/letstudygroup/moodle-local_ace) local plugin.
 
 ## Features
 
